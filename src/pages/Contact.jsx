@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Sparkles, ArrowRight, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle } from "lucide-react";
 import {
   FaLinkedinIn,
   FaGithub,
@@ -13,133 +13,129 @@ const contactInfo = [
     icon: Mail,
     label: "Email",
     value: "hello@aaruui.com",
-    gradient: "from-pink-500 to-rose-500",
   },
   {
     id: "02",
     icon: Phone,
     label: "Phone",
     value: "+91 98765 43210",
-    gradient: "from-blue-500 to-cyan-500",
   },
   {
     id: "03",
     icon: MapPin,
     label: "Location",
     value: "Indore, Madhya Pradesh",
-    gradient: "from-purple-500 to-indigo-500",
   },
 ];
 
+// FIXED: Added dynamic brand hover classes for backgrounds, text, and borders
 const socials = [
-  { icon: FaLinkedinIn, link: "#", color: "hover:bg-[#0A66C2]", label: "LinkedIn" },
-  { icon: FaGithub, link: "#", color: "hover:bg-[#333]", label: "GitHub" },
-  { icon: FaTwitter, link: "#", color: "hover:bg-[#1DA1F2]", label: "Twitter" },
-  { icon: FaInstagram, link: "#", color: "hover:bg-[#E4405F]", label: "Instagram" },
+  {
+    icon: FaLinkedinIn,
+    link: "#",
+    color: "hover:bg-[#0077B5] hover:border-[#0077B5] hover:text-white",
+    label: "LinkedIn"
+  },
+  {
+    icon: FaGithub,
+    link: "#",
+    color: "hover:bg-[#24292e] hover:border-[#24292e] hover:text-white",
+    label: "GitHub"
+  },
+  {
+    icon: FaTwitter,
+    link: "#",
+    color: "hover:bg-[#1DA1F2] hover:border-[#1DA1F2] hover:text-white",
+    label: "Twitter"
+  },
+  {
+    icon: FaInstagram,
+    link: "#",
+    color: "hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:border-transparent hover:text-white",
+    label: "Instagram"
+  },
 ];
 
 const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen bg-gradient-to-b from-[#070B1A] via-[#0B1120] to-[#1E1B4B] flex flex-col justify-start md:justify-center items-center pt-28 pb-16 sm:pt-32 md:py-24 relative overflow-hidden"
+      className="min-h-screen bg-[#F9F9F8] text-zinc-900 flex flex-col justify-start md:justify-center items-center pt-28 pb-24 sm:pt-32 relative overflow-hidden font-sans"
     >
-      {/* Animated Background Global Glows */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-72 h-72 bg-pink-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-10 animate-pulse delay-2000"></div>
-      </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 w-full relative z-10 flex flex-col justify-center items-center">
 
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 w-full relative z-10 flex flex-col justify-center items-center">
         {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-12 md:mb-16 max-w-3xl w-full"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 px-5 py-2 border border-purple-500/20 mb-5 backdrop-blur-md"
-          >
-            <Sparkles className="w-4 h-4 text-purple-400" />
-            <span className="text-purple-300 text-xs font-semibold tracking-[3px] uppercase">
-              Get In Touch
-            </span>
-          </motion.div>
+          <span className="text-zinc-500 uppercase tracking-[4px] text-xs font-semibold block mb-3">
+            Get In Touch
+          </span>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.15] text-white">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-normal tracking-tight leading-[1.15] text-zinc-900">
             Let's Build{" "}
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="italic text-zinc-600 font-serif">
               Something Amazing
             </span>
           </h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="mt-6 max-w-2xl mx-auto text-gray-400 text-base md:text-lg leading-relaxed"
-          >
+          <p className="mt-6 max-w-2xl mx-auto text-zinc-500 text-base md:text-lg leading-relaxed">
             Looking for a creative UI/UX Designer? Let's discuss your next
             project and turn your ideas into beautiful digital experiences.
-          </motion.p>
+          </p>
         </motion.div>
 
         {/* Main Layout Grid Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 w-full items-stretch bg-white/[0.02] backdrop-blur-xl border border-white/10 p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl shadow-black/40">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 w-full items-stretch border border-zinc-200/80 bg-white p-6 sm:p-8 md:p-10 lg:p-12 shadow-sm rounded-none">
 
           {/* Left Side (Contact Cards & Socials Panel) */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="lg:col-span-2 flex flex-col gap-6 w-full justify-between"
           >
             {/* Contact Cards Container */}
             <div className="flex flex-col gap-5 flex-1">
-              {contactInfo.map(({ id, icon: Icon, label, value, gradient }, index) => (
+              {contactInfo.map(({ id, icon: Icon, label, value }, index) => (
                 <motion.div
                   key={id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.01, x: 4 }}
-                  className="group relative bg-white/[0.02] border border-white/10 p-7 flex items-center gap-5 hover:border-purple-500/40 hover:bg-white/[0.04] transition-all duration-300 cursor-pointer overflow-hidden flex-1"
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  whileHover={{ x: 4 }}
+                  className="group relative bg-[#F9F9F8] border border-zinc-200/60 p-6 flex items-center gap-5 hover:border-zinc-400 hover:bg-zinc-50/50 transition-all duration-300 cursor-pointer rounded-none flex-1"
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-r ${ gradient } opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-
-                  <span className="text-gray-600 font-mono font-bold text-sm min-w-[24px] group-hover:text-purple-400 transition-colors">
+                  <span className="text-zinc-400 font-serif italic text-sm min-w-[24px] group-hover:text-zinc-800 transition-colors">
                     {id}
                   </span>
 
-                  <div className={`h-12 w-12 bg-gradient-to-br ${ gradient } flex items-center justify-center shrink-0 shadow-lg`}>
-                    <Icon className="text-white" size={20} />
+                  <div className="h-11 w-11 bg-zinc-900 flex items-center justify-center shrink-0 rounded-none shadow-sm text-white">
+                    <Icon size={18} />
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400 group-hover:text-purple-300 transition-colors">
+                    <h3 className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
                       {label}
                     </h3>
-                    <p className="text-white text-base font-medium mt-0.5 truncate group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-all">
+                    <p className="text-zinc-900 text-base font-medium mt-0.5 truncate">
                       {value}
                     </p>
                   </div>
 
-                  <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all shrink-0" />
+                  <ArrowRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-800 group-hover:translate-x-1 transition-all shrink-0" />
                 </motion.div>
               ))}
             </div>
 
             {/* Social Connect Container */}
-            <div className="bg-white/[0.02] border border-white/10 p-7 hover:border-purple-500/30 transition-all duration-300">
-              <h3 className="text-white text-base font-semibold mb-4 flex items-center gap-3">
-                <span className="w-1 h-5 bg-gradient-to-b from-purple-400 to-pink-400"></span>
+            <div className="bg-[#F9F9F8] border border-zinc-200/60 p-6 rounded-none">
+              <h3 className="text-zinc-800 text-sm font-serif font-medium tracking-wide mb-4 flex items-center gap-2">
                 Connect With Me
               </h3>
 
@@ -148,15 +144,12 @@ const Contact = () => {
                   <motion.a
                     key={index}
                     href={link}
-                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`group h-12 w-12 border border-white/10 bg-white/[0.02] flex items-center justify-center text-gray-400 hover:text-white ${ color } transition-all duration-300 hover:border-transparent hover:shadow-xl relative`}
+                    className={`group h-11 w-11 border border-zinc-200 bg-white flex items-center justify-center text-zinc-500 ${ color } transition-all duration-300 rounded-none relative`}
                     aria-label={label}
                   >
-                    <Icon size={18} />
-                    <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900 px-2 py-0.5 border border-white/10 pointer-events-none whitespace-nowrap z-20">
-                      {label}
-                    </span>
+                    <Icon size={16} />
                   </motion.a>
                 ))}
               </div>
@@ -165,97 +158,92 @@ const Contact = () => {
 
           {/* Right Side (The Form Panel) */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="lg:col-span-3 w-full"
           >
-            <div className="relative bg-white/[0.02] border border-white/10 px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12 transition-all duration-300 h-full flex flex-col justify-between">
-              {/* Radial Ambient Glow */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
+            {/* FIXED: Enhanced padding around the form container (px-8 py-10 to lg:px-12 lg:py-12) */}
+            <div className="bg-[#F9F9F8] border border-zinc-200/60 px-6 py-8 sm:px-10 sm:py-10 lg:px-12 lg:py-12 rounded-none h-full flex flex-col justify-between">
 
-              <div className="relative space-y-6 h-full flex flex-col justify-between">
+              <div className="relative h-full flex flex-col justify-between">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-3">
-                    <span className="w-1.5 h-6 bg-gradient-to-b from-purple-400 to-pink-400"></span>
+                  <h3 className="text-xl font-serif font-medium text-zinc-900">
                     Send Message
                   </h3>
-                  <p className="text-gray-400 mt-2 text-sm">
+                  <p className="text-zinc-500 mt-1 text-sm">
                     Fill out the form below — I usually reply within a day.
                   </p>
                 </div>
 
-                <form className="space-y-6 mt-8 flex flex-col" onSubmit={(e) => e.preventDefault()}>
+                {/* FIXED: Added internal form padding (p-2 sm:p-4) & clean gap structure */}
+                <form className="space-y-6 mt-8 p-1 sm:p-4 bg-white/50 border border-zinc-200/40 rounded-none flex flex-col" onSubmit={(e) => e.preventDefault()}>
 
                   {/* Inputs Row 1 */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="block text-[11px] text-gray-400 font-semibold tracking-wider uppercase">
+                      <label className="block text-[11px] text-zinc-500 font-semibold tracking-wider uppercase">
                         Your Name
                       </label>
                       <input
                         type="text"
                         placeholder="John Doe"
-                        className="w-full h-14 bg-slate-950/50 border border-white/10 px-5 py-4 text-white placeholder:text-gray-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 outline-none transition-all duration-300 text-base shadow-inner"
+                        className="w-full h-12 bg-white border border-zinc-200 px-4 text-zinc-900 placeholder:text-zinc-300 focus:border-zinc-400 focus:ring-0 outline-none transition-all duration-200 text-sm rounded-none"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label className="block text-[11px] text-gray-400 font-semibold tracking-wider uppercase">
+                      <label className="block text-[11px] text-zinc-500 font-semibold tracking-wider uppercase">
                         Email Address
                       </label>
                       <input
                         type="email"
                         placeholder="john@email.com"
-                        className="w-full h-14 bg-slate-950/50 border border-white/10 px-5 py-4 text-white placeholder:text-gray-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 outline-none transition-all duration-300 text-base shadow-inner"
+                        className="w-full h-12 bg-white border border-zinc-200 px-4 text-zinc-900 placeholder:text-zinc-300 focus:border-zinc-400 focus:ring-0 outline-none transition-all duration-200 text-sm rounded-none"
                       />
                     </div>
                   </div>
 
                   {/* Subject Input */}
                   <div className="space-y-2">
-                    <label className="block text-[11px] text-gray-400 font-semibold tracking-wider uppercase">
+                    <label className="block text-[11px] text-zinc-500 font-semibold tracking-wider uppercase">
                       Subject
                     </label>
                     <input
                       type="text"
                       placeholder="Let's work together"
-                      className="w-full h-14 bg-slate-950/50 border border-white/10 px-5 py-4 text-white placeholder:text-gray-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 outline-none transition-all duration-300 text-base shadow-inner"
+                      className="w-full h-12 bg-white border border-zinc-200 px-4 text-zinc-900 placeholder:text-zinc-300 focus:border-zinc-400 focus:ring-0 outline-none transition-all duration-200 text-sm rounded-none"
                     />
                   </div>
 
                   {/* Message Input */}
                   <div className="space-y-2">
-                    <label className="block text-[11px] text-gray-400 font-semibold tracking-wider uppercase">
+                    <label className="block text-[11px] text-zinc-500 font-semibold tracking-wider uppercase">
                       Message
                     </label>
                     <textarea
-                      rows={6}
+                      rows={5}
                       placeholder="Write your message..."
-                      className="w-full bg-slate-950/50 border border-white/10 p-5 text-white placeholder:text-gray-600 resize-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/10 outline-none transition-all duration-300 text-base min-h-[160px] shadow-inner"
+                      className="w-full bg-white border border-zinc-200 p-4 text-zinc-900 placeholder:text-zinc-300 resize-none focus:border-zinc-400 focus:ring-0 outline-none transition-all duration-200 text-sm min-h-[140px] rounded-none"
                     />
                   </div>
 
                   {/* Submit Action Button */}
-                  <div className="pt-4">
+                  <div className="pt-2">
                     <motion.button
-                      whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.98 }}
                       type="submit"
-                      className="group relative w-full h-14 bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 py-4 text-base font-semibold text-white flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 overflow-hidden"
+                      className="w-full h-12 bg-zinc-900 hover:bg-zinc-800 text-sm font-medium text-white flex items-center justify-center gap-2 shadow-sm transition-all duration-200 rounded-none"
                     >
-                      <span className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></span>
-                      <span className="relative flex items-center gap-3">
-                        Send Message
-                        <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </span>
+                      Send Message
+                      <Send className="w-3.5 h-3.5" />
                     </motion.button>
                   </div>
 
                   {/* Status Indicator */}
-                  <div className="flex items-center justify-center gap-2 text-xs text-gray-500 pt-4">
-                    <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                  <div className="flex items-center justify-center gap-2 text-xs text-zinc-400 pt-1">
+                    <CheckCircle className="w-3.5 h-3.5 text-zinc-500" />
                     <span>I'll respond within 24 hours</span>
                   </div>
                 </form>

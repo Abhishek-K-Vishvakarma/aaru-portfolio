@@ -15,8 +15,6 @@ import {
 import { FaFigma, FaBehance, FaDribbble } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const tools = ["Figma", "Framer", "Webflow", "Photoshop", "Illustrator", "Notion"];
-
 const services = [
   {
     icon: Palette,
@@ -75,17 +73,13 @@ const fadeUp = {
   transition: { duration: 0.6 },
 };
 
-/* Small reusable "device frame" illustration used on project cards.
-   Built entirely with CSS so nothing relies on external photos. */
 const MockupFrame = ({ accent, bars }) => (
   <div className="relative h-40 w-full overflow-hidden border-b border-white/10 bg-[#0B1120]">
-    {/* fake browser chrome */}
     <div className="flex items-center gap-1.5 border-b border-white/5 bg-white/[0.03] px-3 py-2">
       <span className="h-2 w-2 rounded-full bg-red-400/60" />
       <span className="h-2 w-2 rounded-full bg-yellow-400/60" />
       <span className="h-2 w-2 rounded-full bg-emerald-400/60" />
     </div>
-    {/* fake layout */}
     <div className="flex h-full gap-2 p-3">
       <div className="flex w-1/4 flex-col gap-1.5">
         <div className={`h-2 w-full bg-gradient-to-r ${ accent } opacity-80`} />
@@ -108,239 +102,59 @@ const MockupFrame = ({ accent, bars }) => (
 
 const Home = () => {
   return (
-    <div className="w-full bg-[#070B1A] font-body overflow-x-hidden">
-      {/* ================= HERO ================= */}
-      <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center pt-28 pb-20 bg-[#0B0F19]">
+    <div className="w-full bg-[#fafafa] text-slate-800 font-body overflow-x-hidden">
 
-        {/* Ambient Background Glows */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
-          <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-[160px] animate-pulse duration-[6s]"></div>
-          <div className="absolute bottom-[-10%] left-[30%] w-[600px] h-[600px] bg-cyan-500/15 rounded-full blur-[140px] animate-pulse duration-[8s] delay-2000"></div>
+      {/* ================= HERO ================= */}
+      <section
+        className="relative min-h-screen w-full flex items-center bg-cover bg-center bg-no-repeat px-8 sm:px-16 lg:px-24"
+        style={{
+          backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.85) 30%, rgba(255,255,255,0.2) 100%), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop')`
+        }}
+      >
+        {/* Hero Identity Text (Left Aligned) */}
+        <div className="max-w-xl z-10 mt-12">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-7xl sm:text-8xl lg:text-9xl font-light tracking-widest text-slate-800 font-serif uppercase select-none drop-shadow-sm"
+          >
+            Aaru
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="mt-4 text-base sm:text-lg tracking-wide text-zinc-600 font-medium font-serif italic"
+          >
+            Crafting intuitive digital interfaces where empathy meets aesthetic precision.
+          </motion.p>
         </div>
 
-        {/* Premium Cyber Dot Grid */}
-        <div
-          className="absolute inset-0 opacity-[0.12] pointer-events-none z-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(168,85,247,0.4) 1px, transparent 1px), radial-gradient(circle, rgba(255,255,255,0.15) 1.5px, transparent 1.5px)",
-            backgroundSize: "40px 40px",
-            backgroundPosition: "0 0, 20px 20px",
-          }}
-        />
-
-        <div className="relative z-10 max-w-6xl mx-auto w-full px-6 sm:px-8 lg:px-12">
-          {/* Grid System to prevent overlap between text and card */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
-
-            {/* LEFT COLUMN: HERO TEXT CONTENT */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="flex flex-col items-start text-left w-full lg:col-span-7"
-            >
-              {/* Badge */}
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 150 }}
-                className="inline-flex items-center gap-2.5 border border-purple-500/40 bg-gradient-to-r from-purple-500/15 to-cyan-500/5 px-4 py-2 rounded-full backdrop-blur-md"
-              >
-                <Sparkles size={14} className="text-purple-400" />
-                <span className="text-purple-300 text-[10px] font-bold tracking-[3px] uppercase">
-                  Available For Remote Projects
-                </span>
-              </motion.div>
-
-              {/* Main Heading */}
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-black leading-tight text-white tracking-tight"
-              >
-                Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">Aaru</span>
-              </motion.h1>
-
-              {/* Subheading / Role */}
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight"
-              >
-                <span className="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">
-                  UI / UX Designer
-                </span>
-              </motion.h2>
-
-              {/* Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="mt-6 text-gray-400 text-base sm:text-lg leading-relaxed max-w-lg font-medium"
-              >
-                Crafting high-fidelity, pixel-perfect digital assets. I bridge the gap between complex functionality and breathtaking aesthetic minimalism.
-              </motion.p>
-
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="mt-10 flex flex-wrap items-center gap-4 w-full"
-              >
-                <Link
-                  to="/projects"
-                  className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-cyan-500 px-8 py-4 text-white font-bold text-sm tracking-wide rounded-xl overflow-hidden shadow-[0_0_30px_rgba(168,85,247,0.3)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] transition-all duration-300"
-                >
-                  <span className="relative z-10">Explore My Work</span>
-                  <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-                </Link>
-
-                <button className="group inline-flex items-center gap-3 border border-white/10 bg-white/[0.03] px-8 py-4 font-bold text-white text-sm tracking-wide rounded-xl backdrop-blur-xl hover:bg-white/[0.08] hover:border-white/20 transition-all duration-300">
-                  <span>Get Resume</span>
-                  <Download size={18} className="text-cyan-400" />
-                </button>
-              </motion.div>
-
-              {/* Tools Marquee */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7 }}
-                className="relative mt-12 w-full max-w-md overflow-hidden border-t border-b border-white/[0.05] py-3"
-                style={{
-                  maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-                  WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-                }}
-              >
-                <div className="flex w-max gap-8 text-gray-500 text-[10px] font-bold uppercase tracking-[4px] animate-marquee whitespace-nowrap">
-                  {[...tools, ...tools].map((t, i) => (
-                    <span key={i} className="hover:text-cyan-400 transition-colors duration-300">
-                // {t}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* RIGHT COLUMN: RECTANGLE PROFILE CARD */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex w-full justify-center lg:col-span-5 z-10"
-            >
-              <div className="relative w-full max-w-[340px] sm:max-w-[360px] aspect-[3/4] my-8 flex flex-col">
-
-                {/* Outer Card Glow (Removed border radius) */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-cyan-500 rounded-none blur-xl opacity-35"></div>
-
-                {/* Card Body Container (Removed border radius) */}
-                <div className="relative h-full w-full flex flex-col border border-white/[0.12] bg-[#0E1322]/95 backdrop-blur-2xl rounded-none overflow-hidden shadow-2xl z-10">
-
-                  {/* Top Display Area */}
-                  <div className="relative flex-1 flex flex-col items-center justify-center pt-14 pb-12 px-8 bg-gradient-to-br from-purple-900/20 via-[#131B2E] to-cyan-900/20 border-b border-white/[0.08]">
-
-                    {/* Decorative Tech Circles */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-                      <div className="absolute h-48 w-48 border border-dashed border-purple-500/20 rounded-full animate-spin duration-[30s]" />
-                      <div className="absolute h-56 w-56 border border-double border-cyan-500/10 rounded-full animate-spin duration-[20s]" />
-                    </div>
-
-                    {/* Profile Image Blocks */}
-                    <div className="relative z-10 h-36 w-36 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-600 to-cyan-500 flex items-center justify-center text-7xl font-display font-black text-white shadow-lg shadow-purple-500/30 select-none">
-                      A
-                    </div>
-
-                    {/* Status Badge */}
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 whitespace-nowrap flex items-center gap-2 bg-[#0B0F19] px-4 py-2 rounded-full text-[10px] font-bold text-emerald-400 border border-emerald-500/30 shadow-lg">
-                      <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                      <span className="tracking-widest uppercase">Open To Work</span>
-                    </div>
-                  </div>
-
-                  {/* Profile Info & Socials Footer (Increased bottom padding to ensure clean rendering of all icons) */}
-                  <div className="pt-10 pb-10 px-6 sm:px-8 bg-gradient-to-b from-transparent to-[#090D1A] flex flex-col gap-4">
-                    <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <h2 className="font-display text-2xl font-black text-white tracking-tight">
-                          Aaru
-                        </h2>
-                        <p className="mt-1 text-cyan-400 text-[11px] font-bold tracking-widest uppercase">Digital Architect</p>
-                      </div>
-
-                      {/* Social Icons Layout Container */}
-                      <div className="flex gap-1.5 bg-white/[0.03] p-1.5 rounded-xl border border-white/[0.05] items-center shrink-0">
-                        <a href="#" className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-purple-500/20 transition-all flex items-center justify-center">
-                          <FaFigma size={14} />
-                        </a>
-                        <a href="#" className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-blue-500/20 transition-all flex items-center justify-center">
-                          <FaBehance size={14} />
-                        </a>
-                        <a href="#" className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-pink-500/20 transition-all flex items-center justify-center">
-                          <FaDribbble size={14} />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Widget 1 - Left */}
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -left-10 top-1/4 z-30 border border-white/[0.1] bg-[#0E1322]/95 px-4 py-3 rounded-xl backdrop-blur-xl shadow-xl text-left min-w-[110px]"
-                >
-                  <h3 className="text-2xl font-display font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                    25+
-                  </h3>
-                  <p className="text-gray-400 text-[9px] font-bold uppercase tracking-wider mt-0.5">Completed UI</p>
-                </motion.div>
-
-                {/* Floating Widget 2 - Right */}
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                  className="absolute -right-10 bottom-1/4 z-30 border border-white/[0.1] bg-[#0E1322]/95 px-4 py-3 rounded-xl backdrop-blur-xl shadow-xl text-left min-w-[110px]"
-                >
-                  <h3 className="text-2xl font-display font-black bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-                    2+ Yrs
-                  </h3>
-                  <p className="text-gray-400 text-[9px] font-bold uppercase tracking-wider mt-0.5">Industry Exp.</p>
-                </motion.div>
-
-              </div>
-            </motion.div>
-
-          </div>
+        {/* Social Icons Container (Bottom Right) */}
+        <div className="absolute bottom-8 right-8 sm:right-16 lg:right-24 flex items-center gap-5 text-slate-400 z-20">
+          <a href="#" className="hover:text-slate-800 transition-colors"><FaFigma size={18} /></a>
+          <a href="#" className="hover:text-slate-800 transition-colors"><FaBehance size={18} /></a>
+          <a href="#" className="hover:text-slate-800 transition-colors"><FaDribbble size={18} /></a>
         </div>
       </section>
 
       {/* ================= WHAT I DO ================= */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 flex flex-col items-center justify-center w-full">
+      <section id="about" className="relative py-24 px-6 sm:px-8 lg:px-12 bg-white border-t border-slate-100 flex flex-col items-center justify-center w-full">
         <div className="max-w-7xl mx-auto w-full flex flex-col items-center">
           <motion.div {...fadeUp} className="text-center mb-16 flex flex-col items-center">
-            <span className="inline-flex items-center gap-2 border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-cyan-300 text-xs font-semibold tracking-[2px] uppercase">
+            <span className="inline-flex items-center gap-2 border border-purple-200 bg-purple-50 px-4 py-2 text-purple-600 text-xs font-semibold tracking-[2px] uppercase">
               <Sparkles size={13} />
               What I Do
             </span>
-            <h2 className="mt-5 font-display text-3xl sm:text-4xl font-bold text-white text-center">
+            <h2 className="mt-5 font-display text-3xl sm:text-4xl font-bold text-slate-900 text-center">
               Design that solves,{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                 not just decorates
               </span>
             </h2>
-            <p className="mt-4 text-gray-400 max-w-xl mx-auto text-center">
-              Four things I care about on every project, from the first
-              sketch to final handoff.
-            </p>
           </motion.div>
 
-          {/* Added justify-center and justify-items-center to keep row items perfectly aligned */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full justify-center justify-items-center">
             {services.map((s, i) => (
               <motion.div
@@ -350,15 +164,15 @@ const Home = () => {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ y: -6 }}
-                className="group flex flex-col items-center text-center border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl hover:border-purple-500/30 hover:bg-white/[0.05] transition-all duration-300 w-full max-w-sm"
+                className="group flex flex-col items-center text-center border border-slate-100 bg-slate-50/50 p-8 hover:border-purple-200 hover:bg-white hover:shadow-xl hover:shadow-slate-100 transition-all duration-300 w-full max-w-sm"
               >
-                <div className="h-14 w-14 flex items-center justify-center border border-white/10 bg-gradient-to-br from-purple-500/20 to-cyan-500/20 text-purple-300 group-hover:text-cyan-300 transition-colors">
+                <div className="h-14 w-14 flex items-center justify-center border border-slate-200 bg-white text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
                   <s.icon size={24} />
                 </div>
-                <h3 className="mt-6 font-display text-lg font-bold text-white">
+                <h3 className="mt-6 font-display text-lg font-bold text-slate-900">
                   {s.title}
                 </h3>
-                <p className="mt-3 text-sm text-gray-400 leading-relaxed">
+                <p className="mt-3 text-sm text-slate-500 leading-relaxed">
                   {s.desc}
                 </p>
               </motion.div>
@@ -368,28 +182,21 @@ const Home = () => {
       </section>
 
       {/* ================= FEATURED WORK ================= */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 flex flex-col items-center justify-center w-full">
+      <section className="relative py-24 px-6 sm:px-8 lg:px-12 bg-slate-50/50 border-t border-slate-100 flex flex-col items-center justify-center w-full">
         <div className="max-w-7xl mx-auto w-full flex flex-col items-center">
-          <motion.div
-            {...fadeUp}
-            className="flex flex-col items-center text-center gap-4 mb-16"
-          >
-            <span className="inline-flex items-center gap-2 border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-purple-300 text-xs font-semibold tracking-[2px] uppercase">
+          <motion.div {...fadeUp} className="flex flex-col items-center text-center gap-4 mb-16">
+            <span className="inline-flex items-center gap-2 border border-slate-200 bg-white px-4 py-2 text-slate-700 text-xs font-semibold tracking-[2px] uppercase shadow-sm">
               <Sparkles size={13} />
               Selected Work
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900">
               A few recent builds
             </h2>
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition-colors mt-1"
-            >
+            <Link to="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors mt-1">
               View all projects <ArrowRight size={16} />
             </Link>
           </motion.div>
 
-          {/* Added grid layout constraints to properly align work boxes inside center constraints */}
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 w-full justify-center justify-items-center">
             {projects.map((p, i) => (
               <motion.div
@@ -398,17 +205,17 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="group flex flex-col items-center text-center border border-white/10 bg-[#0B1120]/60 backdrop-blur-xl overflow-hidden hover:border-white/20 transition-all duration-300 w-full max-w-sm"
+                className="group flex flex-col items-center text-center border border-slate-200/60 bg-white overflow-hidden hover:border-slate-300 hover:shadow-xl transition-all duration-300 w-full max-w-sm"
               >
                 <MockupFrame accent={p.accent} bars={p.bars} />
                 <div className="p-6 flex flex-col items-center">
-                  <h3 className="font-display text-lg font-bold text-white">
+                  <h3 className="font-display text-lg font-bold text-slate-900">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-xs uppercase tracking-wide text-gray-500">
+                  <p className="mt-2 text-xs uppercase tracking-wide text-slate-400">
                     {p.tag}
                   </p>
-                  <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-cyan-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity">
                     <span>View case study</span>
                     <ArrowRight size={14} />
                   </div>
@@ -420,20 +227,20 @@ const Home = () => {
       </section>
 
       {/* ================= PROCESS ================= */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 flex flex-col items-center justify-center w-full">
+      <section className="relative py-24 px-6 sm:px-8 lg:px-12 bg-white border-t border-slate-100 flex flex-col items-center justify-center w-full">
         <div className="max-w-7xl mx-auto w-full flex flex-col items-center">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <span className="inline-flex items-center gap-2 border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-cyan-300 text-xs font-semibold tracking-[2px] uppercase">
+            <span className="inline-flex items-center gap-2 border border-purple-100 bg-purple-50/50 px-4 py-2 text-purple-600 text-xs font-semibold tracking-[2px] uppercase">
               <Sparkles size={13} />
               How I Work
             </span>
-            <h2 className="mt-5 font-display text-3xl sm:text-4xl font-bold text-white">
+            <h2 className="mt-5 font-display text-3xl sm:text-4xl font-bold text-slate-900">
               A simple, repeatable process
             </h2>
           </motion.div>
 
           <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full justify-center justify-items-center">
-            <div className="hidden lg:block absolute top-10 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+            <div className="hidden lg:block absolute top-10 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
             {process.map((step, i) => (
               <motion.div
                 key={step.step}
@@ -441,20 +248,20 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl flex flex-col items-center text-center w-full max-w-sm"
+                className="relative border border-slate-100 bg-slate-50/50 p-6 flex flex-col items-center text-center w-full max-w-sm"
               >
                 <div className="flex items-center justify-between w-full">
-                  <div className="h-10 w-10 flex items-center justify-center border border-purple-500/30 bg-gradient-to-br from-purple-600/30 to-cyan-500/30 text-white">
+                  <div className="h-10 w-10 flex items-center justify-center bg-purple-600 text-white">
                     <step.icon size={18} />
                   </div>
-                  <span className="font-display text-2xl font-bold text-white/10">
+                  <span className="font-display text-2xl font-bold text-slate-200">
                     {step.step}
                   </span>
                 </div>
-                <h3 className="mt-5 font-display text-base font-bold text-white">
+                <h3 className="mt-5 font-display text-base font-bold text-slate-900">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-sm text-gray-400 leading-relaxed">
+                <p className="mt-2 text-sm text-slate-500 leading-relaxed">
                   {step.desc}
                 </p>
               </motion.div>
@@ -464,21 +271,20 @@ const Home = () => {
       </section>
 
       {/* ================= TESTIMONIAL ================= */}
-      {/* Added flex and items-center to keep the block perfectly centered */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 w-full flex flex-col items-center justify-center">
+      <section className="relative py-24 px-6 sm:px-8 lg:px-12 bg-slate-50 border-t border-slate-100 w-full flex flex-col items-center justify-center">
         <div className="max-w-3xl w-full text-center flex flex-col items-center justify-center mx-auto">
           <motion.div {...fadeUp} className="flex flex-col items-center justify-center w-full">
-            <Quote className="mx-auto text-purple-400" size={32} />
-            <p className="mt-6 font-display text-xl sm:text-2xl font-medium text-white leading-relaxed text-center">
+            <Quote className="mx-auto text-purple-500" size={32} />
+            <p className="mt-6 font-display text-xl sm:text-2xl font-medium text-slate-800 leading-relaxed text-center">
               "Aaru turned a rough idea into a product our users actually
               enjoy using. Every screen felt considered, not just pretty."
             </p>
-            <div className="mt-6 flex items-center justify-center gap-1 text-yellow-400">
+            <div className="mt-6 flex items-center justify-center gap-1 text-amber-400">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} size={16} fill="currentColor" />
               ))}
             </div>
-            <p className="mt-3 text-sm text-gray-500 text-center">
+            <p className="mt-3 text-sm text-slate-400 text-center">
               Product Lead, early-stage startup
             </p>
           </motion.div>
@@ -486,28 +292,31 @@ const Home = () => {
       </section>
 
       {/* ================= CTA ================= */}
-      {/* Added flex and items-center to center the banner container wrapper */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 w-full flex flex-col items-center justify-center">
+      <section id="resume" className="relative py-24 px-6 sm:px-8 lg:px-12 bg-white border-t border-slate-100 w-full flex flex-col items-center justify-center">
         <div className="max-w-4xl w-full mx-auto flex justify-center">
           <motion.div
             {...fadeUp}
-            className="relative border border-white/10 bg-gradient-to-br from-purple-600/20 via-[#111827] to-cyan-600/20 p-10 sm:p-14 text-center overflow-hidden w-full flex flex-col items-center justify-center"
+            className="relative border border-slate-100 bg-slate-50 p-10 sm:p-14 text-center overflow-hidden w-full flex flex-col items-center justify-center rounded-2xl"
           >
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-purple-600/20 rounded-full blur-[100px]" />
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-cyan-600/20 rounded-full blur-[100px]" />
-            <h2 className="relative font-display text-2xl sm:text-3xl font-bold text-white text-center">
+            <h2 className="relative font-display text-2xl sm:text-3xl font-bold text-slate-900 text-center">
               Have an idea worth designing well?
             </h2>
-            <p className="relative mt-3 text-gray-400 max-w-md mx-auto text-center">
+            <p className="relative mt-3 text-slate-500 max-w-md mx-auto text-center">
               I'm currently open to new freelance and full-time opportunities.
             </p>
-            <Link
-              to="/contact"
-              className="relative mt-7 inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-cyan-500 px-8 py-3.5 text-white font-semibold text-sm tracking-wide hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/40 transition-all duration-300 border border-purple-400/30"
-            >
-              <span>Let's Talk</span>
-              <ArrowRight size={18} />
-            </Link>
+            <div className="flex flex-wrap gap-4 justify-center mt-8">
+              <Link
+                to="/contact"
+                className="relative inline-flex items-center gap-3 bg-slate-900 px-8 py-3.5 text-white font-semibold text-sm tracking-wide hover:bg-slate-800 transition-all duration-300 shadow-lg shadow-slate-900/10"
+              >
+                <span>Let's Talk</span>
+                <ArrowRight size={18} />
+              </Link>
+              <button className="inline-flex items-center gap-3 border border-slate-200 bg-white px-8 py-3.5 font-bold text-slate-700 text-sm tracking-wide shadow-sm hover:bg-slate-50 transition-all duration-300">
+                <span>Get Resume</span>
+                <Download size={18} className="text-purple-600" />
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>

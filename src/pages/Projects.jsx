@@ -31,108 +31,111 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section className="bg-[#070B1A] min-h-screen pb-24 flex flex-col items-center relative z-10">
+    <section className="bg-[#F9F9F8] text-zinc-900 min-h-screen pb-24 flex flex-col items-center relative z-10 font-sans">
 
-      {/* FIXED: This invisible block pushes EVERYTHING down below your navbar */}
+      {/* Invisible block ensuring content clears your navbar safely */}
       <div className="h-28 sm:h-36 md:h-44 w-full clear-both" />
 
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
 
         {/* Heading Container */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16 md:mb-20 w-full"
         >
-          <span className="uppercase tracking-[6px] text-cyan-400 text-xs md:text-sm font-semibold block mb-3">
+          <span className="uppercase tracking-[4px] text-zinc-500 text-xs font-semibold block mb-3">
             Portfolio
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mt-3">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-normal text-zinc-900 tracking-tight mt-3">
             Featured
-            <span className="bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent">
-              {" "}Projects
-            </span>
+            <span className="italic text-zinc-600 font-serif"> Projects</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto mt-4 md:mt-6 text-sm sm:text-base md:text-lg leading-relaxed px-4">
+          <p className="text-zinc-500 max-w-2xl mx-auto mt-4 md:mt-6 text-sm sm:text-base md:text-lg leading-relaxed px-4">
             A collection of UI/UX projects focused on usability, accessibility, and delightful user experiences.
           </p>
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="w-full grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 max-w-6xl mx-auto">
+        <div className="w-full grid md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, ease: "easeOut" }}
-              whileHover={{ y: -8 }}
-              className="group relative border border-white/5 bg-[#0d1527] shadow-2xl flex flex-col w-full overflow-hidden"
+              transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
+              whileHover={{ y: -6 }}
+              className="group relative border border-zinc-200/80 bg-white shadow-sm flex flex-col w-full overflow-hidden rounded-none"
             >
               {/* Image Container */}
-              <div className="relative overflow-hidden aspect-[16/10] w-full bg-slate-900">
+              <div className="relative overflow-hidden aspect-[16/10] w-full bg-zinc-100 border-b border-zinc-200/60">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="h-full w-full object-cover duration-700 ease-out group-hover:scale-105 group-hover:opacity-80"
+                  className="h-full w-full object-cover duration-700 ease-out grayscale-[15%] contrast-[95%] group-hover:scale-102"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1527] via-transparent to-transparent opacity-60" />
 
-                {/* Category Badge */}
-                <span className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-4 py-1.5 text-cyan-400 text-[10px] tracking-[3px] uppercase font-bold border border-white/10">
+                {/* Subtle, soft image overlay overlay instead of deep dark gradient */}
+                <div className="absolute inset-0 bg-zinc-900/5 opacity-0 group-hover:opacity-100 duration-300" />
+
+                {/* Refined Minimal Category Badge */}
+                <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 text-zinc-800 text-[10px] tracking-[2px] uppercase font-semibold border border-zinc-200/60 shadow-sm">
                   {project.category}
                 </span>
               </div>
 
               {/* Content Box */}
-              <div className="p-6 sm:p-8 md:p-10 flex flex-col items-center text-center flex-grow">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight group-hover:text-cyan-300 duration-300">
+              <div className="p-6 sm:p-8 md:p-10 flex flex-col items-center text-center flex-grow bg-white">
+                <h3 className="text-xl sm:text-2xl font-serif font-medium text-zinc-900 tracking-tight group-hover:text-zinc-600 duration-300">
                   {project.title}
                 </h3>
 
-                <p className="mt-3 md:mt-4 text-gray-400 leading-relaxed text-sm sm:text-base">
+                <p className="mt-3 md:mt-4 text-zinc-500 leading-relaxed text-sm sm:text-base">
                   {project.description}
                 </p>
 
-                {/* Buttons */}
+                {/* Action Buttons */}
                 <div className="mt-6 md:mt-8 flex flex-wrap gap-3 md:gap-4 justify-center w-full">
-                  <button className="bg-gradient-to-r from-purple-600 to-cyan-500 px-6 md:px-8 py-2.5 md:py-3 text-white text-sm font-semibold flex items-center gap-2 hover:scale-105 active:scale-95 duration-200 shadow-lg shadow-purple-900/20 border border-purple-400/30 transition-all hover:shadow-purple-500/40">
+
+                  {/* Premium Solid Button */}
+                  <button className="bg-zinc-900 hover:bg-zinc-800 px-6 md:px-8 py-2.5 md:py-3 text-white text-sm font-medium flex items-center gap-2 duration-200 shadow-sm rounded-none transition-all">
                     Live Preview
-                    <ExternalLink size={16} />
+                    <ExternalLink size={14} />
                   </button>
 
-                  <button className="border border-white/10 bg-white/5 px-6 md:px-8 py-2.5 md:py-3 text-white text-sm font-semibold flex items-center gap-2 hover:bg-white/10 active:scale-95 duration-200 transition-all hover:border-white/30">
+                  {/* Clean Outline Button */}
+                  <button className="border border-zinc-300 bg-transparent px-6 md:px-8 py-2.5 md:py-3 text-zinc-700 text-sm font-medium flex items-center gap-2 hover:bg-zinc-50 hover:border-zinc-400 duration-200 transition-all rounded-none">
                     Figma
-                    <FaFigma size={16} />
+                    <FaFigma size={14} className="text-zinc-600" />
                   </button>
                 </div>
               </div>
 
-              {/* Corner Hover Arrow */}
+              {/* Sharp Elegant Corner Hover Arrow */}
               <div className="absolute top-4 right-4 opacity-0 translate-x-2 -translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 duration-300 ease-out">
-                <div className="h-9 w-9 md:h-10 md:w-10 bg-cyan-400 flex items-center justify-center text-black shadow-lg">
-                  <ArrowUpRight size={18} />
+                <div className="h-9 w-9 bg-zinc-900 flex items-center justify-center text-white shadow-sm">
+                  <ArrowUpRight size={16} />
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* View All Projects Button */}
+        {/* Bottom Call-to-Action View All Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.4 }}
           className="mt-16 md:mt-20"
         >
-          <button className="border border-white/15 bg-white/5 px-10 md:px-12 py-4 text-white font-semibold text-sm tracking-wide backdrop-blur-xl hover:bg-white/10 hover:border-white/30 transition-all duration-300 flex items-center gap-3">
+          <button className="border border-zinc-900 bg-transparent text-zinc-900 px-10 md:px-12 py-4 font-medium text-sm tracking-wide hover:bg-zinc-900 hover:text-white transition-all duration-300 flex items-center gap-3 rounded-none">
             View All Projects
-            <ArrowUpRight size={18} />
+            <ArrowUpRight size={16} />
           </button>
         </motion.div>
 
